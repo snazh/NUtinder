@@ -8,9 +8,9 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardBut
 # ], resize_keyboard=True, input_field_placeholder="Choose smth...")
 
 account_options = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="Create new profile", callback_data="new_profile")],
+
     [InlineKeyboardButton(text="Details", callback_data="details")],
-    [InlineKeyboardButton(text="Change photo", callback_data="update_photo")],
+    [InlineKeyboardButton(text="Change smth", callback_data="update_profile")],
     [InlineKeyboardButton(text="Deactivate", callback_data="deactivate")],
     [InlineKeyboardButton(text="Menu", callback_data="menu")]
 ])
@@ -28,7 +28,6 @@ anketa_reaction = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text="💔")],
     [KeyboardButton(text="💤")]
 ], resize_keyboard=True, input_field_placeholder="???")
-
 gender = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text="female")],
     [KeyboardButton(text="male")],
@@ -55,5 +54,14 @@ course = ReplyKeyboardMarkup(keyboard=[
 ], resize_keyboard=True, input_field_placeholder="Your course?")
 
 proceed_button = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="proceed", callback_data="new_profile")],
+    [InlineKeyboardButton(text="proceed", callback_data="proceed")],
+])
+
+
+update_profile = InlineKeyboardMarkup(inline_keyboard=[
+
+    [InlineKeyboardButton(text="Photo", callback_data="update_photo")],
+    [InlineKeyboardButton(text="Text", callback_data="update_text")],
+    [InlineKeyboardButton(text="Name", callback_data="update_name")],
+    [InlineKeyboardButton(text="Course", callback_data="update_course")]
 ])

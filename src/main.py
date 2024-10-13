@@ -4,8 +4,6 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from config import bot_settings
 from handlers import profile_router, main_router, commands_router
-import aioredis
-
 
 
 # async def fetch_user_profiles():
@@ -22,6 +20,7 @@ async def main():
     dispatcher.include_router(profile_router)
     dispatcher.include_router(commands_router)
     dispatcher.include_router(main_router)
+
     await dispatcher.start_polling(bot)
 
 

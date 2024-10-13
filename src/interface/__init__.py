@@ -1,4 +1,4 @@
-import keyboards
-import menu_texts
-
-__all__ = ["keyboards", "menu_texts"]
+# import keyboards
+# import menu_texts
+#
+# __all__ = ["keyboards", "menu_texts"]

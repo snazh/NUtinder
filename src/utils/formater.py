@@ -44,4 +44,3 @@ def format_anketa(profile: dict) -> str:
     return profile_text
 
 
-print(isinstance(menu_options.actions, str))

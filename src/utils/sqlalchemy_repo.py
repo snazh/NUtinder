@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
-import asyncio
+
 from typing import List, Any
 
-from sqlalchemy import insert, select, delete, text
+from sqlalchemy import insert, select, delete, text, update
 
 from src.database.connector import async_session_maker
-from src.models.user import UserProfile, GenderEnum, User
 
 
 class AbstractRepository(ABC):  # Abstract layer for CRUD initialization
@@ -26,6 +25,14 @@ class AbstractRepository(ABC):  # Abstract layer for CRUD initialization
         raise NotImplementedError
 
     @abstractmethod
+    async def update_one(self, entity_id: int, column: str, value: Any):
+        raise NotImplementedError
+
+    @abstractmethod
+    async def raw_custom_query(self, sql_query: str):
+        raise NotImplementedError
+
+    @abstractmethod
     async def filter(self, filter_column: str, value: int | str):
         return NotImplementedError
 
@@ -42,12 +49,11 @@ class SQLAlchemyRepository(AbstractRepository):
         """Convert SQLAlchemy model instance to dictionary"""
         return {column.name: getattr(entity, column.name) for column in entity.__table__.columns}
 
-    async def add_one(self, data: dict) -> int:  # returns record's pk
+    async def add_one(self, data: dict) -> None:  # returns record's pk
         async with async_session_maker() as session:
-            stmt = insert(self.model).values(**data).returning(self.model.id)
-            result = await session.execute(stmt)
+            stmt = insert(self.model).values(**data)
+            await session.execute(stmt)
             await session.commit()
-            return result.scalar_one()
 
     async def get_all(self) -> list[dict]:  # returns all records
         async with async_session_maker() as session:
@@ -100,7 +106,6 @@ class SQLAlchemyRepository(AbstractRepository):
 
     async def raw_custom_query(self, sql_query: str):
         async with async_session_maker() as session:
-
             query = text(sql_query)
 
             # Execute the query
@@ -111,17 +116,25 @@ class SQLAlchemyRepository(AbstractRepository):
 
         return [dict(row) for row in rows]
 
-    async def update_one(self, entity_id):  # todo
-        pass
+    async def update_one(self, entity_id: int, column: str, value: Any):  # todo
+        async with async_session_maker() as session:
+            stmt = (
+                update(self.model).
+                where(self.model.id == entity_id).
+                values(**{column: value})
+            )
+            await session.execute(stmt)
+            await session.commit()
 
-async def main():
-    instance = SQLAlchemyRepository()
-    instance.model = UserProfile
-
-    results = await instance.raw_custom_query(sql_query="SELECT DISTINCT ON (user_id) * "
-                                                        "FROM profile "
-                                                        "ORDER BY user_id, registered_at DESC")
-    print(results)
-
-
-asyncio.run(main())
+# async def main():
+#     instance = SQLAlchemyRepository()
+#     instance.model = UserProfile
+#
+#     results = await instance.raw_custom_query(sql_query="SELECT DISTINCT ON (user_id) * "
+#                                                         "FROM profile "
+#                                                         "ORDER BY user_id, registered_at DESC")
+#
+#     print(results)
+#
+#
+# asyncio.run(main())

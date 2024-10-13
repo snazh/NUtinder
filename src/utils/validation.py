@@ -1,4 +1,4 @@
-from src.models.user import GenderEnum
+from src.models.enums import GenderEnum, SoulmateGenderEnum
 from better_profanity import profanity
 
 
@@ -10,57 +10,50 @@ class ValidationError(Exception):
         super().__init__(self.message)
 
 
-class ValidationService:
-
-    def __init__(self, data: dict):
-        self.data = data
-
-    def set_name(self) -> None:
-        contains_profanity = profanity.contains_profanity(self.data["name"])
+class Validation:
+    @staticmethod
+    async def set_name(name: str) -> None:
+        contains_profanity = profanity.contains_profanity(name)
 
         if contains_profanity:
             raise ValidationError("Forbidden name")
 
-    def set_description(self) -> None:
+        elif len(name) > 24:
+            raise ValidationError("Too long name")
 
-        if len(self.data["description"]) > 10000:
+    @staticmethod
+    async def set_desc(desc: str) -> None:
+        if len(desc) > 2048:
             raise ValidationError("Too long description")
 
-    def set_nuid(self) -> None:
+    @staticmethod
+    async def set_gender(gender: str) -> GenderEnum:
 
-        if len(self.data["nu_id"]) > 9:
+        if gender not in ("female", "male"):
+            raise ValidationError("Not valid gender")
+        return GenderEnum[gender]
+
+    @staticmethod
+    async def set_soulmate_gender(gender) -> SoulmateGenderEnum:
+        if gender not in ("female", "male", "all"):
+            raise ValidationError("Not valid gender")
+        return SoulmateGenderEnum[gender]
+
+    @staticmethod
+    async def set_photo(photo_url: str) -> None:
+        if photo_url is None:
+            raise ValidationError("Not valid photo")
+
+    @staticmethod
+    async def set_nuid(nu_id: str) -> None:
+        if len(nu_id) != 9:
             raise ValidationError("Invalid NU id")
 
-    def set_gender(self) -> None:
-        gender = self.data["gender"].lower()
-
-        if gender in ("female", "male"):
-            self.data["gender"] = GenderEnum[gender]
-        else:
-            self.data["gender"] = GenderEnum["other"]
-
-    def set_soulmate_gender(self) -> None:
-        gender = self.data["soulmate_gender"].lower()
-        if gender in ("female", "male"):
-            self.data["soulmate_gender"] = GenderEnum[gender]
-        else:
-            self.data["soulmate_gender"] = GenderEnum["other"]
-
-    def set_course(self) -> None:
-
+    @staticmethod
+    async def set_course(course: str) -> None:
         courses = ("NUFYP", "1st course", "2nd course",
                    "3rd course", "4th course", "Master degree",
                    "PhD degree", "Anonymous")
 
-        if self.data["course"] not in courses:
+        if course not in courses:
             raise ValidationError("Not valid course")
-
-
-def validate_data(data: dict) -> None:
-    validation_service = ValidationService(data)
-
-    for method_name in dir(validation_service):
-        if method_name.startswith("set_"):
-            method = getattr(validation_service, method_name)
-            if callable(method):
-                method()

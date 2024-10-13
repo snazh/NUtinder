@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ec914da-646f-434a-a169-54bff56883dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/NUTinder.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/2024_08_17_2154-deeb9fbca168_database_creation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dependecies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependecies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handlers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handlers/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handlers/main_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/main_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handlers/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handlers/profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface/keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/user_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/user_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/formater.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/formater.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/sqlalchemy_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/sqlalchemy_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,32 +47,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.auth_service.executor": "Run",
-    "Python.basic.executor": "Run",
-    "Python.config.executor": "Run",
-    "Python.dependecies.executor": "Run",
-    "Python.formater.executor": "Run",
-    "Python.keyboards.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.main_handler.executor": "Run",
-    "Python.menu_texts.executor": "Run",
-    "Python.reg_filters.executor": "Run",
-    "Python.register.executor": "Run",
-    "Python.requests.executor": "Run",
-    "Python.sqlalchemy_repo.executor": "Run",
-    "Python.temik.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.user.executor": "Run",
-    "Python.user_management.executor": "Run",
-    "Python.validation.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.auth_service.executor&quot;: &quot;Run&quot;,
+    &quot;Python.basic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.commands.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dependecies.executor&quot;: &quot;Run&quot;,
+    &quot;Python.formater.executor&quot;: &quot;Run&quot;,
+    &quot;Python.keyboards.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_handler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.menu_texts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.profile.executor&quot;: &quot;Run&quot;,
+    &quot;Python.reg_filters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.register.executor&quot;: &quot;Run&quot;,
+    &quot;Python.requests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sqlalchemy_repo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.temik.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.user.executor&quot;: &quot;Run&quot;,
+    &quot;Python.user_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.validation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\konys\PycharmProjects\NUTinder\src\repositories" />
       <recent name="C:\Users\konys\PycharmProjects\NUTinder\src\interface" />
       <recent name="C:\Users\konys\PycharmProjects\NUTinder\src\models" />
       <recent name="C:\Users\konys\PycharmProjects\NUTinder\src" />
@@ -86,5 +98,16 @@
       <updated>1723288549115</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

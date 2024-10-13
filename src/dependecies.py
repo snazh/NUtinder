@@ -1,16 +1,18 @@
+from src.repositories.profile_repo import ProfileRepository, ProfileEvalRepository
+from src.repositories.user_repo import UserRepository
+from src.services.profile_service import ProfileService, ProfileEvalService
+from src.services.user_management import UserService
 
 
-from src.services.user_management import UserProfileService, UserService
-from src.user_repository import UserProfileRepository, UserRepository
-
-
-def get_user_profile_service():
-    return UserProfileService(users_repo=UserProfileRepository)
+def get_profile_service():
+    return ProfileService(profile_repo=ProfileRepository)
 
 
 def get_user_service():
-    return UserService(users_repo=UserRepository)
+    return UserService(user_repo=UserRepository)
 
 
+def get_profile_eval_service():
+    return ProfileEvalService(profile_eval_repo=ProfileEvalRepository)
 
 
